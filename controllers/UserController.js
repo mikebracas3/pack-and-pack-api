@@ -33,10 +33,10 @@ router.use(bodyParser.json());
  router.get('/search', function(req, res) {
 	var resp = {"code":0,"message":"Datos incorrectos","response":""};
 	var user = new User();
-	user.load(req.body);
+	user.load(req.query);
 	
 	if(user.validate('search')){
-		user.find(req.body).then((items) => {
+		user.find(req.query).then((items) => {
 			resp.code = 10;
 			resp.message = "Successful";
 			resp.response = items;
